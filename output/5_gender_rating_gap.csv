@@ -1,0 +1,11 @@
+movie_id,title,avg_male,avg_female,gender_gap,num_ratings
+87485,Bad Teacher (2011),3.43,1.0,2.43,81
+704,"Quest, The (1996)",0.5,2.92,2.42,63
+4815,Hearts in Atlantis (2001),1.0,3.3,2.3,54
+86347,Louis C.K.: Chewed Up (2008),2.0,4.25,2.25,63
+86320,Melancholia (2011),4.33,2.13,2.21,63
+5585,Ernest Scared Stupid (1991),1.0,3.17,2.17,54
+1975,Friday the 13th Part 2 (1981),4.0,1.9,2.1,63
+4941,Flash Gordon (1980),5.0,2.93,2.07,72
+4866,"Last Castle, The (2001)",1.0,3.07,2.07,72
+2315,Bride of Chucky (Child's Play 4) (1998),1.17,3.17,2.0,54

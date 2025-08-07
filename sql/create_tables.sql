@@ -1,9 +1,17 @@
 -- Create table for storing movie information
+DROP TABLE IF EXISTS ratings;
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS tags;
+DROP TABLE IF EXISTS links;
+
+
 CREATE TABLE movies (
     movie_id SERIAL PRIMARY KEY,       -- Unique ID for each movie
     title VARCHAR(255),                -- Movie title
-    release_year INT                   -- Year the movie was released
+    release_year INT,                  -- Year the movie was released
+    genres TEXT                        -- Pipe-separated list of genres (e.g. Comedy|Drama)
 );
+
 
 -- Create table for storing user information
 CREATE TABLE users (
