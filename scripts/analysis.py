@@ -100,6 +100,19 @@ queries = {
         HAVING COUNT(*) >= 20
         ORDER BY std_dev DESC
         LIMIT 10;
+    """,
+    "7_top10_highest_rated_movies": """
+        SELECT
+            m.movie_id,
+            m.title,
+            COUNT(*) AS num_ratings,
+            ROUND(AVG(r.rating)::numeric, 2) AS avg_rating
+        FROM ratings r
+        JOIN movies m ON r.movie_id = m.movie_id
+        GROUP BY m.movie_id, m.title
+        HAVING COUNT(*) >= 100
+        ORDER BY avg_rating DESC
+        LIMIT 10;
     """
 }
 
@@ -107,7 +120,7 @@ queries = {
 for title, query in queries.items():
     print(f"Running query: {title}")
     df = pd.read_sql_query(query, conn)
-    output_path = os.path.join(output_dir, f"{title}.csv")  # <== fixed here
+    output_path = os.path.join(output_dir, f"{title}.csv") 
     df.to_csv(output_path, index=False)
     print(f"Saved results to: {output_path}")
 

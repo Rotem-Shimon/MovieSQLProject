@@ -120,3 +120,25 @@ LIMIT 10;
 -- Explanation:
 -- Measures how spread out the ratings are using STDDEV (standard deviation).
 -- Helps identify divisive movies that people either love or hate.
+
+
+-- 7. Movies with highest average rating (min. 100 ratings)
+SELECT
+    m.movie_id,
+    m.title,
+    COUNT(*) AS num_ratings,
+    ROUND(AVG(r.rating)::numeric, 2) AS avg_rating
+FROM
+    ratings r
+JOIN
+    movies m ON r.movie_id = m.movie_id
+GROUP BY
+    m.movie_id, m.title
+HAVING
+    COUNT(*) >= 100
+ORDER BY
+    avg_rating DESC
+LIMIT 10;
+-- Explanation:
+-- Filters out movies with very few ratings to avoid bias.
+-- Helps identify the most appreciated movies overall.
