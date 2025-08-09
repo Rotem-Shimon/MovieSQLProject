@@ -1,5 +1,8 @@
 import pandas as pd
 from sqlalchemy import create_engine
+from sqlalchemy import text
+import sys
+
 
 # Database connection settings
 DB_NAME = 'movies_db'
@@ -48,3 +51,45 @@ genres.to_sql('genres', engine, if_exists='append', index=False)
 users.to_sql('users', engine, if_exists='append', index=False)
 
 print("✅ Data loaded successfully.")
+
+
+
+
+# --- Inline Validation (runs after load; exits with code 1 on failure) ---
+def _assert(cond: bool, msg: str):
+    if cond:
+        print(f"OK: {msg}")
+    else:
+        print(f"FAIL: {msg}")
+        sys.exit(1)
+
+print("🔎 Validating data integrity...")
+
+with engine.connect() as conn:
+    # 1) Row counts > 0
+    for t in ["movies", "ratings", "users", "genres"]:
+        n = conn.execute(text(f"SELECT COUNT(*) FROM {t}")).scalar()
+        _assert(n is not None and n > 0, f"{t} has rows (count={n})")
+
+    # 2) Ratings within valid range [0.5, 5.0]
+    min_r = conn.execute(text("SELECT MIN(rating) FROM ratings")).scalar()
+    max_r = conn.execute(text("SELECT MAX(rating) FROM ratings")).scalar()
+    _assert(min_r is not None and min_r >= 0.5, f"ratings min >= 0.5 (got {min_r})")
+    _assert(max_r is not None and max_r <= 5.0, f"ratings max <= 5.0 (got {max_r})")
+
+    # 3) No orphan FKs: ratings.movie_id/user_id must exist in parent tables
+    orphans_movies = conn.execute(text("""
+        SELECT COUNT(*) FROM ratings r
+        LEFT JOIN movies m ON r.movie_id = m.movie_id
+        WHERE m.movie_id IS NULL;
+    """)).scalar()
+    _assert(orphans_movies == 0, "ratings -> movies has no orphans")
+
+    orphans_users = conn.execute(text("""
+        SELECT COUNT(*) FROM ratings r
+        LEFT JOIN users u ON r.user_id = u.user_id
+        WHERE u.user_id IS NULL;
+    """)).scalar()
+    _assert(orphans_users == 0, "ratings -> users has no orphans")
+
+print("✅ Validation passed.")
