@@ -1,38 +1,35 @@
-# 🎬 MovieSQLProject
+# 🎬 MovieLens SQL Analytics
+📊 **PostgreSQL + Python + Data Visualization** project analyzing the MovieLens dataset. Built to demonstrate **SQL modeling, ETL, advanced queries, and insights visualization** — fast, clean, and production-ready.
 
-A professional MovieLens analysis project using SQL + Python — built for impact, style, and career value.
+## 🚀 Highlights
+- 🗄 **Database Design** – Fully normalized schema with PK/FK integrity  
+- ⚡ **ETL with Python** – Loads raw CSV into PostgreSQL via SQLAlchemy  
+- 📈 **Advanced SQL** – Joins, aggregations, HAVING filters, subqueries  
+- 🎨 **Visualizations** – Charts and CSV reports for key insights  
 
----
-
-## 🧱 Project Structure
-```
-├── data/        → Raw CSV files
-├── sql/         → Advanced SQL queries
-├── scripts/     → Load data into PostgreSQL
-├── notebooks/   → Full analysis in Jupyter
-├── output/      → Charts and CSV results
-└── README.md    → You're here!
-```
-
----
-
-## 🚀 What's Inside?
-
-- Clean, modular SQL queries for key insights  
-- PostgreSQL + pandas + matplotlib integration  
-- Visualizations ready for GitHub & presentations  
-- A polished, real-world project for your portfolio
-
----
+## 🗺 ERD
+![ERD](output/ERD.png)
 
 ## 📊 Example Output
-
 ![Top 10 Highest Rated Movies](output/Top10HighestRatedMovies.png)
 
+## 📂 Structure
+sql/         → create_tables.sql, analysis_queries.sql  
+scripts/     → load_data.py, analysis.py  
+data/        → MovieLens CSV dataset  
+output/      → CSV results + charts  
 
----
+## 📊 Sample Insights
+- 🎥 **Top Rated Movies** (min 100 ratings)  
+- 📌 **Most Popular Movies** by number of ratings  
+- 🎭 **Average Ratings by Genre**  
+- 👫 **Gender Rating Gaps** (synthetic demo data)  
 
-## 🧰 Tech Stack
+## 🔧 Quick Start
+```bash
+python scripts/load_data.py
+python scripts/analysis.py
+```
 
-**SQL** | **PostgreSQL** | **Python** | **Jupyter** | **Matplotlib**
-
+## 🛠 Tech Stack
+**PostgreSQL**, **Python (pandas, SQLAlchemy, matplotlib)**, **GitHub**
