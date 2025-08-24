@@ -1,59 +1,60 @@
 # 🎬 MovieLens SQL Analytics
-📊 **PostgreSQL + Python + Data Visualization** project analyzing the MovieLens dataset.  
-Demonstrates **SQL modeling, ETL, advanced queries, and visual insights** — clean, fast, and industry-standard.
+
+**PostgreSQL + SQL + Python Data Analysis** on the MovieLens dataset.  
+Showcases **database design, ETL pipelines, advanced SQL queries, and professional data insights.**
+
+---
+
+## 📊 Key Visuals
+
+<p align="center">
+  <img src="output/ERD.png" alt="ERD" width="48%"/>
+  <img src="output/Top10HighestRatedMovies.png" alt="Top Movies" width="48%"/>
+</p>
+
+**Left:** Database schema (ERD) — normalized with PK/FK integrity.  
+**Right:** Top 10 highest-rated movies (≥100 ratings).
+
+---
+
+## 💡 Why This Project
+
+This project demonstrates how to move from **raw CSV files → relational database → actionable insights**.  
+It highlights core analyst skills:  
+- Structuring and querying relational databases  
+- Extracting insights with **advanced SQL**  
+- Using Python for ETL and data visualization  
 
 ---
 
 ## 🚀 Highlights
-- 🗄 **Database Design** – Normalized schema with PK/FK integrity  
-- ⚡ **ETL with Python** – Load raw CSV → PostgreSQL via SQLAlchemy  
-- 📈 **Advanced SQL** – Joins, aggregations, HAVING filters, subqueries  
-- 🎨 **Visualizations** – Charts + CSV reports for key metrics  
+
+- 🗄 **SQL Database Design** — normalized schema, PK/FK constraints, clean ERD  
+- ⚡ **ETL with Python** — load MovieLens CSV → PostgreSQL via SQLAlchemy  
+- 📈 **Advanced SQL** — joins, aggregations, HAVING filters, subqueries  
+- 🎨 **Visual Analytics** — CSV exports + charts for stakeholders  
+- ❓ Answered real business-style questions (top movies, genre trends, rating patterns)  
 
 ---
 
-## 🗺 ERD
-![ERD](output/ERD.png)
+## 🛠️ Skills & Tech Stack
+
+**Database:** PostgreSQL  
+**ETL:** Python, SQLAlchemy, Pandas  
+**Analysis:** SQL (joins, group by, subqueries, HAVING)  
+**Visualization:** Matplotlib, CSV exports  
 
 ---
 
-## 📊 Example Output
-![Top 10 Highest Rated Movies](output/Top10HighestRatedMovies.png)
-
----
-
-## 📂 Structure
+## 📂 Project Structure
 ```
 sql/         → create_tables.sql, analysis_queries.sql
 scripts/     → load_data.py, analysis.py
-data/        → MovieLens CSV dataset
-output/      → CSV results + charts
+data/        → MovieLens dataset (CSV)
+output/      → charts + CSV reports
+notebooks/   → Jupyter analysis (interactive)
 ```
 
 ---
 
-## 📊 Sample Insights
-- 🎥 **Top Rated Movies** (min 100 ratings)  
-- 📌 **Most Popular Movies** (#ratings)  
-- 🎭 **Average Ratings by Genre**  
-- 👫 **Gender Rating Gaps** (synthetic demo data)  
-
----
-
-## 🏃 How to Run
-```bash
-# 1️⃣ Load dataset into PostgreSQL (with inline data validation)
-python scripts/load_data.py
-
-# 2️⃣ Create tables & schema
-psql -U postgres -d movies_db -f sql/create_tables.sql
-
-# 3️⃣ Run analysis queries & export results
-python scripts/analysis.py
-```
-💡 All CSV outputs + charts will be generated inside `/output`
-
----
-
-## 🛠 Tech Stack
-**PostgreSQL**, **Python** (pandas, SQLAlchemy, matplotlib), **GitHub**
+📜 MIT License
